@@ -1,11 +1,13 @@
 <template>
   <div class="calendar-wrapper">
+    <workday-week></workday-week>
   </div>
 </template>
 
 <script>
 /*  global  */
 import dayjs from 'dayjs'
+import WorkdayWeek from './workday_week.vue'
 export default {
   name: 'WorkdayContainer',
 
@@ -30,8 +32,15 @@ export default {
     }
   },
 
-  components: {
+  provide: function () {
+    return {
+      workdayOptions: () => this.workdayOptions,
+      workDays: () => this.workDays
+    }
+  },
 
+  components: {
+    WorkdayWeek
   },
 
   mounted () {
