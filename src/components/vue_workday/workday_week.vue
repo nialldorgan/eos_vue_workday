@@ -79,14 +79,21 @@ export default {
     },
 
     workdayStartHour: function () {
-      return sortStartFinishTimes(this.workDays(), 'start_time')      
+      // if workDays is empty this will return undefined
+      if (this.workDays().length) {
+        return sortStartFinishTimes(this.workDays(), 'start_time')
+      }
     },
 
     workdayEndHour: function () {
-      return sortStartFinishTimes(this.workDays(), 'end_time', false)
+      // if workDays is empty this will return undefined
+      if (this.workDays().length) {
+        return sortStartFinishTimes(this.workDays(), 'finish_time', false)
+      }
     },
 
     hours: function () {
+      // if workDays is empty this will return the full 24 hour array
       return getHours({start_hour: this.workdayStartHour, end_hour: this.workdayEndHour})
     },
 

@@ -24,6 +24,7 @@ const getHours = (hour_options = null) => {
   let day_hours = hourUtils.getFullHours()
   if (hour_options) {
     let { start_hour, end_hour } = hour_options
+    // if start_hour and end_hour are undefined day_hours will be the full array
     day_hours = day_hours.slice(start_hour, end_hour)
   }
   let hours = []

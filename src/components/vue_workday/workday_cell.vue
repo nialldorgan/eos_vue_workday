@@ -75,7 +75,8 @@ export default {
         this.$emit('cellClick', {
           cellData: this.cellData.value,
           workday_id: this.workday.id,
-          user_id: this.workday.user.id
+          user_id: this.workday.user.id,
+          other: this.workday.other
         })
       }
     },

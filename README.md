@@ -16,9 +16,10 @@ This takes 2 props
 | -------- | ------------------ |
 | id | String (schedule/workday id) |
 | start_time | String (the start time of the work day) |
-| end_time | String (the end time of the work day) |
+| finish_time | String (the end time of the work day) |
 | user | Object (a user object see below) |
 | events | Array (an array of event objects for this day) |
+| other | Array (optional, an array of other objects/data which you can add and which will be included in the cellEvent) |
 
 ### User Object
 | Property | Type (description) |

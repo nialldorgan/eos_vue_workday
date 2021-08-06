@@ -1,8 +1,8 @@
 {
   "name": "eos_vue_workday",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "A vue component to allow work day scheduling and appointment booking",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack_prod.config.js",
