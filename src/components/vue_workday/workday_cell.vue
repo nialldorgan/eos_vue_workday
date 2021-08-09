@@ -1,7 +1,7 @@
 <template>
   <li 
   @click.stop="cellClickEvent"  
-  class="calendar-cell"  
+  :class="[{'break-cell' : cellIsOnABreak},'calendar-cell']"  
   :style="`height: ${cellHeight}px`">
     <!-- to view all the times uncomment this line below -->
     <!-- <span style="font-size: 7px">{{cellData.value}}</span> -->
@@ -21,6 +21,11 @@
 /*  global  */
 import WorkdayEvent from './workday_event.vue'
 import big from 'big.js'
+import dayjs from 'dayjs'
+import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
+dayjs.extend(isSameOrBefore)
+dayjs.extend(isSameOrAfter)
 export default {
   name: 'WorkdayCell',
 
@@ -58,8 +63,18 @@ export default {
 
     cellEvents: function () {
       return this.workday.events.filter(event => {
-        return (event.start_time === this.cellData.value)
+        return dayjs(event.start_time).isSame(dayjs(this.cellData.value))
       })
+    },
+
+    cellIsOnABreak: function () {
+      if (this.workday.breaks) {
+        return this.workday.breaks.filter(breaktime => {
+          return dayjs(breaktime.start_time).isSameOrBefore(dayjs(this.cellData.value)) && dayjs(breaktime.finish_time).isAfter(dayjs(this.cellData.value))
+        }).length
+      } else {
+        return false
+      }
     }
   },
 
@@ -69,6 +84,9 @@ export default {
     },
     
     cellClickEvent () {
+      if (this.cellIsOnABreak) {
+        return
+      }
       if (this.cellEvents.length) {
         return
       } else {

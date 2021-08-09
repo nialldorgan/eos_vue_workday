@@ -9,13 +9,13 @@
         <template v-for="(day, index) in days">
           <template v-if="_workday(day).length">
             <template v-for="workday in _workday(day)">
-              <workday-day 
+              <workday-day-hour 
               @eventClick="emitEventClick"
               @cellClick="emitCellClick"
               :key="`${index}${workday.id}`" 
               :day="day"   
               :workday="workday"
-              :hour="hour"></workday-day>
+              :hour="hour"></workday-day-hour>
             </template>
           </template>
           <template v-else>
@@ -33,7 +33,7 @@ import { sortStartFinishTimes, getHours, workday } from '../../utils'
 import dayjs from 'dayjs'
 import isoWeek from 'dayjs/plugin/isoWeek'
 dayjs.extend(isoWeek)
-import WorkdayDay from './workday_day.vue'
+import WorkdayDayHour from './workday_day_hour.vue'
 import WorkdayHeader from './workday_header.vue'
 import WorkdayHours from './workday_hours.vue'
 export default {
@@ -51,10 +51,10 @@ export default {
 
   inject: ['workdayOptions', 'workDays'],
 
-  components: {
-    WorkdayDay,
+  components: {    
     WorkdayHours,
-    WorkdayHeader
+    WorkdayHeader,
+    WorkdayDayHour
   },
 
   mounted () {

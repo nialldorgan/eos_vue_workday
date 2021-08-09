@@ -1,6 +1,6 @@
 {
   "name": "eos_vue_workday",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "description": "A vue component to allow work day scheduling and appointment booking",
   "main": "dist/index.js",
   "scripts": {

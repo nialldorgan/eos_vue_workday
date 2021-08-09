@@ -16,7 +16,7 @@
 import dayjs from 'dayjs'
 import WorkdayCell from './workday_cell.vue'
 export default {
-  name: 'WorkdayDay',
+  name: 'WorkdayDayHour',
 
   props: {
     hour: Object,

@@ -64,9 +64,13 @@
         display: flex;
         flex: 1;
         &:not(:last-child) {
-            border-bottom: 1px dotted map.get($grey, 'lighten-4')
+            border-bottom: 1px dotted map.get($grey, 'lighten-4');
         }
       }
+    .break-cell {
+        background-color: map.get($grey, 'lighten-4');
+        cursor: not-allowed;
+    }
     .hours {
         font-weight: 500;
         font-size: 0.85rem;
